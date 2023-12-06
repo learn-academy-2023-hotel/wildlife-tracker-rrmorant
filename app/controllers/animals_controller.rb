@@ -1,17 +1,13 @@
 class AnimalsController < ApplicationController
 
-  def index
-    animals = Animal.all
-    render json: animals
+	def index
+    	animals = Animal.all
+			render json: animals, include: [:sightings]
 	end
 
   def show
     animal = Animal.find(params[:id])
-		if animal.valid?
-			render json: animal
-		else
-			render json: animal.errors
-		end
+		render json: animal, include: [:sighting]
   end
 
 	def create
