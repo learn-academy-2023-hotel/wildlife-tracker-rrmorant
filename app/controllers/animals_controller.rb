@@ -44,7 +44,7 @@ class AnimalsController < ApplicationController
 
 	private
 	def animal_params
-		params.required(:animal).permit(:name, :binomial)
+		params.require(:animal).permit(:name, :binomial)
 	end
 
 end
